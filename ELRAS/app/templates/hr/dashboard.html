@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>HR Dashboard</h2>
+
+    <h3>Leave Summary</h3>
+    <p>Total Requests: {{ summary.total_requests }}</p>
+    <p>Approved: {{ summary.approved }}</p>
+    <p>Rejected: {{ summary.rejected }}</p>
+    <p>Pending: {{ summary.pending }}</p>
+
+    <h3>User Statistics</h3>
+    <p>Employees: {{ user_stats.employees }}</p>
+    <p>Managers: {{ user_stats.managers }}</p>
+    <p>HR Admins: {{ user_stats.hr_admins }}</p>
+
+    <br>
+    <a href="{{ url_for('hr.manage_users') }}">Manage Users</a> |
+    <a href="{{ url_for('hr.policies') }}">Policies</a> |
+    <a href="{{ url_for('hr.reports') }}">Reports</a> |
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+</div>
+{% endblock %}

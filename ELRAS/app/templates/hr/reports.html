@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Reports</h2>
+
+    <h3>Summary</h3>
+    <p>Total: {{ summary.total_requests }}</p>
+    <p>Approved: {{ summary.approved }}</p>
+    <p>Rejected: {{ summary.rejected }}</p>
+    <p>Pending: {{ summary.pending }}</p>
+
+    <h3>Department Report</h3>
+    <table border="1" width="100%">
+        <tr>
+            <th>Department</th>
+            <th>Requests</th>
+            <th>Total Days</th>
+        </tr>
+
+        {% for d in department_report %}
+        <tr>
+            <td>{{ d.department }}</td>
+            <td>{{ d.total_requests }}</td>
+            <td>{{ d.total_days }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Leave Balance Report</h3>
+    <table border="1" width="100%">
+        <tr>
+            <th>Employee ID</th>
+            <th>Type</th>
+            <th>Total</th>
+            <th>Used</th>
+            <th>Remaining</th>
+        </tr>
+
+        {% for b in balance_report %}
+        <tr>
+            <td>{{ b.employee_id }}</td>
+            <td>{{ b.leave_type }}</td>
+            <td>{{ b.total }}</td>
+            <td>{{ b.used }}</td>
+            <td>{{ b.remaining }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('hr.dashboard') }}">Back</a>
+</div>
+{% endblock %}

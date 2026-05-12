@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Leave Policies</h2>
+
+    <h3>Create Policy</h3>
+    <form method="POST" action="{{ url_for('hr.create_policy') }}">
+
+        <input type="text" name="policy_name" placeholder="Policy Name" required>
+        <input type="text" name="leave_type" placeholder="Leave Type" required>
+        <input type="number" name="max_days_per_year" placeholder="Max per year" required>
+        <input type="number" name="max_days_per_request" placeholder="Max per request" required>
+
+        <label><input type="checkbox" name="carry_forward"> Carry Forward</label>
+        <input type="number" name="carry_forward_limit" placeholder="Carry Limit">
+
+        <label><input type="checkbox" name="requires_approval" checked> Requires Approval</label>
+        <label><input type="checkbox" name="allow_half_day"> Half Day</label>
+
+        <input type="number" name="min_days_notice" placeholder="Min Notice">
+        <input type="number" name="max_consecutive_days" placeholder="Max Consecutive">
+
+        <button type="submit">Create Policy</button>
+    </form>
+
+    <h3>Existing Policies</h3>
+    <table border="1" width="100%">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Max/Year</th>
+            <th>Status</th>
+            <th>Assign</th>
+        </tr>
+
+        {% for p in policies %}
+        <tr>
+            <td>{{ p.policy_name }}</td>
+            <td>{{ p.leave_type }}</td>
+            <td>{{ p.max_days_per_year }}</td>
+            <td>{{ "Active" if p.is_active else "Inactive" }}</td>
+            <td>
+                <a href="{{ url_for('hr.assign_policy', policy_id=p.id) }}">Assign</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('hr.dashboard') }}">Back</a>
+</div>
+{% endblock %}
