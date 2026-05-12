@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Manager Dashboard</h2>
+
+    <p><strong>Name:</strong> {{ manager.full_name }}</p>
+    <p><strong>Department:</strong> {{ manager.department }}</p>
+
+    <h3>Team Members</h3>
+    <ul>
+        {% for emp in team %}
+        <li>{{ emp.full_name }} ({{ emp.department }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Pending Leave Requests</h3>
+    <table border="1" width="100%">
+        <tr>
+            <th>Employee</th>
+            <th>Type</th>
+            <th>Days</th>
+            <th>Action</th>
+        </tr>
+
+        {% for req in pending_requests %}
+        <tr>
+            <td>{{ req.employee.username }}</td>
+            <td>{{ req.leave_type }}</td>
+            <td>{{ req.total_days }}</td>
+            <td>
+                <a href="{{ url_for('manager.review_requests') }}">Review</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('manager.review_requests') }}">Review Requests</a> |
+    <a href="{{ url_for('manager.team_history') }}">Team History</a> |
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+</div>
+{% endblock %}

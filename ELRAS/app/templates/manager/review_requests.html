@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Review Leave Requests</h2>
+
+    <table border="1" width="100%">
+        <tr>
+            <th>Employee</th>
+            <th>Type</th>
+            <th>Dates</th>
+            <th>Days</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for req in requests %}
+        <tr>
+            <td>{{ req.employee.username }}</td>
+            <td>{{ req.leave_type }}</td>
+            <td>{{ req.start_date }} to {{ req.end_date }}</td>
+            <td>{{ req.total_days }}</td>
+            <td>{{ req.status }}</td>
+
+            <td>
+                {% if req.status == 'pending' %}
+
+                <form action="{{ url_for('manager.approve_leave', leave_id=req.id) }}" method="POST" style="display:inline;">
+                    <input type="text" name="comments" placeholder="Comments">
+                    <button type="submit">Approve</button>
+                </form>
+
+                <form action="{{ url_for('manager.reject_leave', leave_id=req.id) }}" method="POST" style="display:inline;">
+                    <input type="text" name="comments" placeholder="Comments">
+                    <button type="submit">Reject</button>
+                </form>
+
+                {% else %}
+                -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('manager.dashboard') }}">Back</a>
+</div>
+{% endblock %}

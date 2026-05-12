@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Team Leave History</h2>
+
+    <table border="1" width="100%">
+        <tr>
+            <th>Employee</th>
+            <th>Type</th>
+            <th>Dates</th>
+            <th>Days</th>
+            <th>Status</th>
+        </tr>
+
+        {% for leave in team_leaves %}
+        <tr>
+            <td>{{ leave.employee.username }}</td>
+            <td>{{ leave.leave_type }}</td>
+            <td>{{ leave.start_date }} to {{ leave.end_date }}</td>
+            <td>{{ leave.total_days }}</td>
+            <td>{{ leave.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('manager.dashboard') }}">Back</a>
+</div>
+{% endblock %}
