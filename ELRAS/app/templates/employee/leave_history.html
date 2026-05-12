@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Leave History</h2>
+
+    <table border="1" width="100%">
+        <tr>
+            <th>Type</th>
+            <th>Dates</th>
+            <th>Days</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for leave in leaves %}
+        <tr>
+            <td>{{ leave.leave_type }}</td>
+            <td>{{ leave.start_date }} to {{ leave.end_date }}</td>
+            <td>{{ leave.total_days }}</td>
+            <td>{{ leave.status }}</td>
+            <td>
+                {% if leave.status == 'pending' %}
+                <a href="{{ url_for('employee.cancel_leave', leave_id=leave.id) }}">Cancel</a>
+                {% else %}
+                -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('employee.dashboard') }}">Back</a>
+</div>
+{% endblock %}

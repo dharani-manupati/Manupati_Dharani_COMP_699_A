@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Leave Balance</h2>
+
+    <table border="1" width="100%">
+        <tr>
+            <th>Type</th>
+            <th>Total</th>
+            <th>Used</th>
+            <th>Remaining</th>
+        </tr>
+
+        {% for b in balances %}
+        <tr>
+            <td>{{ b.leave_type }}</td>
+            <td>{{ b.total_allocated }}</td>
+            <td>{{ b.used }}</td>
+            <td>{{ b.remaining }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('employee.dashboard') }}">Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Profile</h2>
+
+    <p><strong>Name:</strong> {{ employee.full_name }}</p>
+    <p><strong>Department:</strong> {{ employee.department }}</p>
+    <p><strong>Designation:</strong> {{ employee.designation }}</p>
+    <p><strong>Join Date:</strong> {{ employee.join_date }}</p>
+
+    <br>
+    <a href="{{ url_for('employee.dashboard') }}">Back</a>
+</div>
+{% endblock %}

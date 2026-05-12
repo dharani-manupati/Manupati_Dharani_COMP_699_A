@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Leave</h2>
+
+    <form method="POST">
+
+        <label>Leave Type</label>
+        <input type="text" name="leave_type" value="{{ leave.leave_type }}" required>
+
+        <label>Start Date</label>
+        <input type="date" name="start_date" value="{{ leave.start_date }}" required>
+
+        <label>End Date</label>
+        <input type="date" name="end_date" value="{{ leave.end_date }}" required>
+
+        <label>Reason</label>
+        <textarea name="reason">{{ leave.reason }}</textarea>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('employee.leave_history') }}">Back</a>
+</div>
+{% endblock %}

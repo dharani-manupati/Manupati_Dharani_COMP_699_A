@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Apply Leave</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Leave Type</label>
+        <input type="text" name="leave_type" required>
+
+        <label>Start Date</label>
+        <input type="date" name="start_date" required>
+
+        <label>End Date</label>
+        <input type="date" name="end_date" required>
+
+        <label>Reason</label>
+        <textarea name="reason" required></textarea>
+
+        <label>Upload Document (optional)</label>
+        <input type="file" name="document">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('employee.dashboard') }}">Back</a>
+</div>
+{% endblock %}
