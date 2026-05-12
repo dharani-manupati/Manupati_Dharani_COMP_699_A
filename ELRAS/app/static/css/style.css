@@ -1,0 +1,215 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h2, h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+    background: #3498db;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+button.approve {
+    background: #27ae60;
+}
+
+button.approve:hover {
+    background: #1e8449;
+}
+
+button.reject {
+    background: #e74c3c;
+}
+
+button.reject:hover {
+    background: #c0392b;
+}
+
+/* =========================
+   TABLE STYLING
+========================= */
+table {
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+table th {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+table tr:hover {
+    background: #eaf2f8;
+}
+
+/* =========================
+   LINKS
+========================= */
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   FLASH MESSAGES
+========================= */
+.flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 300px;
+}
+
+.flash {
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.5s ease, fadeOut 5s forwards;
+}
+
+/* Colors */
+.flash.success { background: #27ae60; }
+.flash.error { background: #e74c3c; }
+.flash.warning { background: #f39c12; }
+.flash.info { background: #3498db; }
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* =========================
+   CARD STYLE (DASHBOARD)
+========================= */
+.card {
+    background: #ecf0f1;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+}
+
+/* =========================
+   NAV LINKS (INLINE MENU)
+========================= */
+.nav-links {
+    margin-top: 15px;
+}
+
+.nav-links a {
+    margin-right: 10px;
+    padding: 6px 10px;
+    background: #ecf0f1;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background: #d0d7de;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
